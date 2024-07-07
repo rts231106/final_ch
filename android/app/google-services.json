@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676326647677",
+    "project_id": "fnl-ch",
+    "storage_bucket": "fnl-ch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676326647677:android:26851a0716bdb7607a8e14",
+        "android_client_info": {
+          "package_name": "com.example.final_ch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7ycWXKv1dPMM7mQWSoAq7DLeVjIDvfa4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
