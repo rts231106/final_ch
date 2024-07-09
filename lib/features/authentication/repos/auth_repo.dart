@@ -7,6 +7,8 @@ class AuthenticationRepository {
   bool get isLoggedIn => user != null;
   User? get user => _firebaseAuth.currentUser;
 
+  //여기서 우리는 firebase와 통신을 한다. createUserWithEmailAndPassword로 사용자를 생성한다.
+  //백엔드로 Create User를 보내는것
   Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
 
   Future<UserCredential> emailSignUp(String email, String password) async {
@@ -27,9 +29,13 @@ class AuthenticationRepository {
     );
   }
 
-  Future<void> githubSignIn() async {
-    await _firebaseAuth.signInWithProvider(GithubAuthProvider());
-  }
+
 }
 
 final authRepo = Provider((ref) => AuthenticationRepository());
+
+
+final authState = StreamProvider((ref) {
+  final repo = ref.read(authRepo);
+  return repo.authStateChanges();
+});

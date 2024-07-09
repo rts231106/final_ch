@@ -1,7 +1,7 @@
 import 'package:final_ch/features/authentication/View/logInScreen.dart';
 import 'package:final_ch/features/authentication/View/signUpScreen.dart';
 import 'package:final_ch/features/authentication/repos/auth_repo.dart';
-import 'package:final_ch/features/navigation/view/homescreen.dart';
+import 'package:final_ch/features/navigation/view/main_navigation_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,9 +31,12 @@ final routerProvider = Provider((ref) {
           builder: (context, state) =>  LoginScreen(),
         ),
          GoRoute(
-          name: HomeScreen.routeName,
-          path: HomeScreen.routeURL,
-          builder: (context, state) =>  HomeScreen(),
+          path: "/:tab(home|writing)",
+          name: MainNavigationScreen.routeName,
+                  builder: (context, state) {
+          final tab = state.params["tab"]!;
+          return MainNavigationScreen(tab: tab);
+        },
         ),
       ]);
 });
