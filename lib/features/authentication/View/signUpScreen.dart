@@ -73,8 +73,12 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   void _onNextTap() {}
 
   void _onLoginTap(BuildContext context) {
-    // context.go 사용자를 이동 시키는 것인데 Push와 다르게 back 버튼이 없어서 고객이 다시 뒤로 돌아가지 못
-    context.push(LoginScreen.routeURL);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const LoginScreen(),
+      ),
+    );
   }
 
   @override
@@ -83,19 +87,22 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          title: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.local_fire_department_sharp,
-                color: Colors.red,
-              ),
-              Text("MOOD"),
-              Icon(
-                Icons.local_fire_department_sharp,
-                color: Colors.red,
-              ),
-            ],
+          title: Center(
+            child: const Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.local_fire_department_sharp,
+                  color: Colors.red,
+                ),
+                Text("MOOD"),
+                Icon(
+                  Icons.local_fire_department_sharp,
+                  color: Colors.red,
+                ),
+              ],
+            ),
           ),
         ),
         body: SingleChildScrollView(
@@ -181,8 +188,8 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 GestureDetector(
                   onTap: _onSubmit,
                   child: FormButton(
-                    disabled: 
-                     _email.isEmpty || _isEmailValid() != null && !_ispasswordValid(),
+                    disabled: _email.isEmpty ||
+                        _isEmailValid() != null && !_ispasswordValid(),
                     label: "Enter",
                   ),
                 ),
@@ -204,7 +211,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 GestureDetector(
                   onTap: () => _onLoginTap(context),
                   child: const Text(
-                    "Sign up",
+                    "Sign In",
                     style: TextStyle(
                       color: Colors.red,
                       fontWeight: FontWeight.w600,

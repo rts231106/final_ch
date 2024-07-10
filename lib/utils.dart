@@ -10,6 +10,9 @@ void showFirebaseErrorSnack(
       showCloseIcon: true,
       content: Text(
         (error as FirebaseException).message ?? "Something wen't wrong.",
+        style: const TextStyle(
+          color: Colors.white,
+        ),
       ),
     ),
   );
