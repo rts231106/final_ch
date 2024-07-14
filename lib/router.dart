@@ -11,7 +11,7 @@ final routerProvider = Provider((ref) {
       redirect: (context, state) {
         final isLoggedIn = ref.read(authRepo).isLoggedIn;
         if (!isLoggedIn) {
-          //subloc == router의 sub location이라는 뜻 , 유저가 있는 곳 
+          //subloc == router의 sub location이라는 뜻 , 유저가 있는 곳
           if (state.subloc != SignUpScreen.routeURL &&
               state.subloc != LoginScreen.routeURL) {
             return SignUpScreen.routeURL;
@@ -23,20 +23,20 @@ final routerProvider = Provider((ref) {
         GoRoute(
           name: SignUpScreen.routeName,
           path: SignUpScreen.routeURL,
-          builder: (context, state) => SignUpScreen(),
+          builder: (context, state) => const SignUpScreen(),
         ),
         GoRoute(
           name: LoginScreen.routeName,
           path: LoginScreen.routeURL,
-          builder: (context, state) =>  LoginScreen(),
+          builder: (context, state) => const LoginScreen(),
         ),
-         GoRoute(
+        GoRoute(
           path: "/:tab(home|writing)",
           name: MainNavigationScreen.routeName,
-                  builder: (context, state) {
-          final tab = state.params["tab"]!;
-          return MainNavigationScreen(tab: tab);
-        },
+          builder: (context, state) {
+            final tab = state.params["tab"]!;
+            return MainNavigationScreen(tab: tab);
+          },
         ),
       ]);
 });

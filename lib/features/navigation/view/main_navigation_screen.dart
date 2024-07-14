@@ -1,5 +1,6 @@
 import 'package:final_ch/constatns/sizes.dart';
 import 'package:final_ch/features/navigation/view/MoodTrackerScreen.dart';
+import 'package:final_ch/features/navigation/view/post_screen.dart';
 import 'package:final_ch/features/navigation/widget/nav_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -39,6 +40,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -54,7 +56,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ],
         ),
       ),
-      body: Stack(
+      body: IndexedStack(
+        index: _selectedIndex,
         children: [
           Offstage(
             offstage: _selectedIndex != 0,
@@ -62,7 +65,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: const Scaffold(),
+            child: const PostScreen(),
           ),
         ],
       ),
